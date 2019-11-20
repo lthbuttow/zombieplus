@@ -5,6 +5,7 @@ module.exports = {
     src_folders: ['tests'],
 
     page_objects_path: './pages',
+    globals_path: './hooks/global.js',
     
     webdriver: {
         start_process: true,
