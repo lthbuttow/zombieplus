@@ -1,5 +1,22 @@
 
+var createActions = {
+    createForm: function() {
+        return this
+            .click('@addButton')
+            .waitForElementVisible('@movieForm', 3000)
+    },
+    selectStatus: function(status) {
+        return this
+            .click('@statusSelect')
+            .useXpath()
+            .waitForElementVisible(`//li//span[contains(text(),"${status}")]`, 2000)
+            .click(`//li//span[contains(text(),"${status}")]`)
+            .useCss()
+    }
+}
+
 module.exports = {
+    commands: [createActions],
     elements: {
         addButton: '.movie-add',
         movieForm: '#movie-form',

@@ -25,9 +25,9 @@ module.exports = {
         let movie = browser.page.movie()
 
         movie
-            .click('@addButton')
-            .waitForElementVisible('@movieForm', 3000)
+            .createForm()
             .setValue('@titleInput', movieData.title)
+            .selectStatus(movieData.status)
             .pause(5000)
     }
 }
