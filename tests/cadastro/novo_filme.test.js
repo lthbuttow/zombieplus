@@ -1,3 +1,4 @@
+import pg from '../../lib/db'
 
 let movieData = {}
 
@@ -14,6 +15,8 @@ module.exports = {
             plot: 'A missão do esquadrão e da Alice é desligar a Rainha Vermelha e coletar dados sobre o incidente'
         }
 
+        pg.removeByTitle(movieData.title)
+
         let login = browser.page.login()
         let sidebar = browser.page.sidebar()
 
@@ -28,6 +31,10 @@ module.exports = {
             .createForm()
             .setValue('@titleInput', movieData.title)
             .selectStatus(movieData.status)
-            .pause(5000)
+            .setValue('@yearInput', movieData.year)
+            .setValue('@dateInput', movieData.releaseDate)
+            .insertCast(movieData.cast)
+            .setValue('@plotInput', movieData.plot)
+            .click('@createButton')
     }
 }

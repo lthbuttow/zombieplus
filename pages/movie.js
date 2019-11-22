@@ -12,6 +12,19 @@ var createActions = {
             .waitForElementVisible(`//li//span[contains(text(),"${status}")]`, 2000)
             .click(`//li//span[contains(text(),"${status}")]`)
             .useCss()
+    },
+    insertCast: function(cast) {
+
+        const browser = this
+
+        cast.forEach(function(actor){
+            browser 
+                .setValue('@castInput', actor)
+                .api.keys(browser.api.Keys.TAB)
+        })
+
+        return this
+
     }
 }
 
