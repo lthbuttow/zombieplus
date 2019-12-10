@@ -30,9 +30,10 @@ var createActions = {
     uploadCover: function(fileName) {
         let fullPath = require('path').resolve(__dirname, '../images/' + fileName)
 
-        console.log(fullPath)
-
-        return this.setValue('@uploadInput', fullPath)
+        return this
+            .setValue('@uploadInput', fullPath)
+            .pause(1000)
+            .assert.attributeContains('.picture-src', 'src', 'blob')
     }
 }
 
